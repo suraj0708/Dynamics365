@@ -1,1 +1,89 @@
 
+
+
+Suraj
+Deepak
+Annu
+
+Security Strcuture in d365
+
+User
+Teams
+Security roles
+Business unit
+Postion 
+hirerchy
+Column security profile
+access teams
+
+3 manager for 3 locations
+for each location you have: 100 person
+
+303 people are having
+
+assign system admin all the manager
+
+create 3 teams for 3 location 
+
+India - 1 manager 
+
+he will add all people to that team manually,
+
+then create a security role and assign it to that team
+Driver & Vehicle Standard
+Agency
+
+
+Security role:
+
+Access level and previledges
+
+Access Level
+User
+Business Unit
+Parent child Business Unit
+Organization 
+
+
+Previledges:
+Read - They can read the record
+Write - They can update the record
+Create - They can create the new record
+Delete - They can delete the record
+Append - attach this record to others
+Append to - allow other records to attach to this
+Share - They can do the activities in the record but the ownership will not be changed
+Assign - They can do the activities in the record but the ownership will be changed
+
+Technician read only
+Suraj
+Sathosh 
+
+Append and append to are complementary permissions
+
+I have lookup of contact in Technician, but I am not able to access Contact lookup there, 
+so to resolve it, I have to give append to previledge in contact and append previledge in technician
+
+Santosh is in Sales BU
+Manager is there
+Rudra is also in same Level
+
+Suraj is in marketing BU
+
+L1
+
+L2
+
+L3
+
+L4
+
+L5
+
+BR:
+two trigger points When record is created, and when that mentioned field is updated
+
+JS:
+1. OnLoad
+2. OnSave
+3. OnChange
