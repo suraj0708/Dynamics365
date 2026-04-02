@@ -1,89 +1,128 @@
+# D365 Security Structure Notes
 
+## People
+- Suraj  
+- Deepak  
+- Annu  
 
+---
 
-Suraj
-Deepak
-Annu
+# Security Structure in D365
 
-Security Strcuture in d365
+- User  
+- Teams  
+- Security Roles  
+- Business Unit  
+- Position  
+- Hierarchy  
+- Column Security Profile  
+- Access Teams  
 
-User
-Teams
-Security roles
-Business unit
-Postion 
-hirerchy
-Column security profile
-access teams
+---
 
-3 manager for 3 locations
-for each location you have: 100 person
+# Example Scenario
 
-303 people are having
+- 3 managers for 3 locations  
+- Each location has 100 people  
+- Total people: **303**
 
-assign system admin all the manager
+### Setup
+1. Assign **System Admin** role to all managers.
+2. Create **3 teams** (one for each location).
 
-create 3 teams for 3 location 
+Example:
 
-India - 1 manager 
+**India Team**
+- 1 Manager  
+- Manager manually adds all team members  
 
-he will add all people to that team manually,
+Then:
+- Create a **Security Role**
+- Assign the role to the **Team**
 
-then create a security role and assign it to that team
-Driver & Vehicle Standard
-Agency
+Example roles:
+- Driver & Vehicle Standard  
+- Agency  
 
+---
 
-Security role:
+# Security Role
 
-Access level and previledges
+Security roles define **Access Levels** and **Privileges**.
 
-Access Level
-User
-Business Unit
-Parent child Business Unit
-Organization 
+## Access Levels
+- **User** – Access only their own records  
+- **Business Unit** – Access records in the same BU  
+- **Parent Child Business Unit** – Access records in BU and its child BUs  
+- **Organization** – Access records across the organization  
 
+---
 
-Previledges:
-Read - They can read the record
-Write - They can update the record
-Create - They can create the new record
-Delete - They can delete the record
-Append - attach this record to others
-Append to - allow other records to attach to this
-Share - They can do the activities in the record but the ownership will not be changed
-Assign - They can do the activities in the record but the ownership will be changed
+## Privileges
 
-Technician read only
-Suraj
-Sathosh 
+- **Read** – View records  
+- **Write** – Update records  
+- **Create** – Create new records  
+- **Delete** – Delete records  
+- **Append** – Attach this record to another record  
+- **Append To** – Allow other records to attach to this record  
+- **Share** – Allow others to work on the record without changing ownership  
+- **Assign** – Transfer record ownership  
 
-Append and append to are complementary permissions
+---
 
-I have lookup of contact in Technician, but I am not able to access Contact lookup there, 
-so to resolve it, I have to give append to previledge in contact and append previledge in technician
+# Example
 
-Santosh is in Sales BU
-Manager is there
-Rudra is also in same Level
+Technicians with **Read-only** access:
+- Suraj  
+- Santosh  
 
-Suraj is in marketing BU
+---
 
-L1
+# Append vs Append To
 
-L2
+These permissions work **together**.
 
-L3
+Example:
 
-L4
+If **Technician** has a lookup to **Contact**, but the lookup is not accessible:
 
-L5
+You must give:
+- **Append To** privilege on **Contact**
+- **Append** privilege on **Technician**
 
-BR:
-two trigger points When record is created, and when that mentioned field is updated
+---
 
-JS:
-1. OnLoad
-2. OnSave
-3. OnChange
+# Business Unit Example
+
+- Santosh → Sales BU  
+- Manager → Sales BU  
+- Rudra → Same level BU  
+
+Suraj → Marketing BU  
+
+---
+
+# Hierarchy Levels
+
+- L1  
+- L2  
+- L3  
+- L4  
+- L5  
+
+---
+
+# Business Rules (BR)
+
+Trigger points:
+- When a **record is created**
+- When a **specific field is updated**
+
+---
+
+# JavaScript Events in D365
+
+1. **OnLoad** – Triggered when form loads  
+2. **OnSave** – Triggered when record is saved  
+3. **OnChange** – Triggered when a field value changes
