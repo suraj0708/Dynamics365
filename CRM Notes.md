@@ -1,1 +1,129 @@
 
+# D365 Security Structure Notes
+
+## People
+- Suraj  
+- Deepak  
+- Annu  
+
+---
+
+# Security Structure in D365
+
+- User  
+- Teams  
+- Security Roles  
+- Business Unit  
+- Position  
+- Hierarchy  
+- Column Security Profile  
+- Access Teams  
+
+---
+
+# Example Scenario
+
+- 3 managers for 3 locations  
+- Each location has 100 people  
+- Total people: **303**
+
+### Setup
+1. Assign **System Admin** role to all managers.
+2. Create **3 teams** (one for each location).
+
+Example:
+
+**India Team**
+- 1 Manager  
+- Manager manually adds all team members  
+
+Then:
+- Create a **Security Role**
+- Assign the role to the **Team**
+
+Example roles:
+- Driver & Vehicle Standard  
+- Agency  
+
+---
+
+# Security Role
+
+Security roles define **Access Levels** and **Privileges**.
+
+## Access Levels
+- **User** – Access only their own records  
+- **Business Unit** – Access records in the same BU  
+- **Parent Child Business Unit** – Access records in BU and its child BUs  
+- **Organization** – Access records across the organization  
+
+---
+
+## Privileges
+
+- **Read** – View records  
+- **Write** – Update records  
+- **Create** – Create new records  
+- **Delete** – Delete records  
+- **Append** – Attach this record to another record  
+- **Append To** – Allow other records to attach to this record  
+- **Share** – Allow others to work on the record without changing ownership  
+- **Assign** – Transfer record ownership  
+
+---
+
+# Example
+
+Technicians with **Read-only** access:
+- Suraj  
+- Santosh  
+
+---
+
+# Append vs Append To
+
+These permissions work **together**.
+
+Example:
+
+If **Technician** has a lookup to **Contact**, but the lookup is not accessible:
+
+You must give:
+- **Append To** privilege on **Contact**
+- **Append** privilege on **Technician**
+
+---
+
+# Business Unit Example
+
+- Santosh → Sales BU  
+- Manager → Sales BU  
+- Rudra → Same level BU  
+
+Suraj → Marketing BU  
+
+---
+
+# Hierarchy Levels
+
+- L1  
+- L2  
+- L3  
+- L4  
+- L5  
+
+---
+
+# Business Rules (BR)
+
+Trigger points:
+- When a **record is created**
+- When a **specific field is updated**
+
+---
+
+# JavaScript Events in D365
+
+1. **OnLoad** – Triggered when form loads  
+2. **OnSave** – Triggered when record is saved  
+3. **OnChange** – Triggered when a field value changes
