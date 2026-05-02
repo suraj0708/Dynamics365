@@ -1,0 +1,5 @@
+Task 14:
+Mistakenly I created Age field as number and it worked for some months and now data is there in that field, now I want the same field to be updated as text field now, so migrate older data to newer field.
+ 
+Task 15:
+If department is deactivated then deactivate all it's related tehnicians.
